@@ -1,0 +1,10 @@
+# linguagem
+runtime:python 																
+# ambiente 'flex' da mais flexibilidade do que o 'standard'.
+env: flex 																	
+entrypoint: gunicorn -b :$PORT main:app     
+# ambiente 'flex' da mais flexibilidade do que o 'standard'. entrypoint da app: gunicorn recebe http pela PORT, executa o arquivo main.py onde está a chamada da app (app.run).
+
+runtime_config:
+  python_version: 3
+  

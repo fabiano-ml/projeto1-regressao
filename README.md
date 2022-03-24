@@ -74,3 +74,36 @@ Instruções de execução da API Flask:
 Exemplo predição batch: http://127.0.0.1:5000/pred_batch/d:/serasa/data/test.csv
 Exemplo predição online: http://127.0.0.1:5000/pred_online/2015-01-27 13:08:24.0000002,2015-01-27 13:08:24 UTC,-73.973320007324219,40.7638053894043,-73.981430053710938,40.74383544921875,1
 
+Deploy com Google App Engine (#)
+
+App Engine é uma plataforma de computação para desenvolver e hospedar aplicações web na infraestrutura da GCP.
+
+Requisitos (###):
+ - SDK da GCP (gcloud)
+ - requiriments.txt - todas dependências de pacotes necessários para a app.
+ - app.yaml - arquivo de configuração para o App Engine executar.
+ - main.py -  código da app.
+
+Sobre gunicorn (###):
+ 	O flask é um framework de desenvolvimento para trabalhar com os request http, mas nao é recomendado em ambiente de produção, e sim o uso do gunicorn que após o App Engine subir o ambiente, colocará o web server na frente que vai tratar as chamadas http de uma forma melhor que o flask.
+
+Instruções do deploy (###): 
+1 - Instale o gcloud (SDK da GCP) 		
+ - https://cloud.google.com/sdk/docs/install
+
+2 - Entre no path /api, ou onde estejam os arquivos app.yaml, main.py (renomeio o main_gcloud.py), requirements.txt.
+
+3 - Realize o deploy
+Execute: gcloud app deploy
+
+Vai aparecer as seguintes informações:
+ - arquivo de configuração identidicado, app.yaml.
+ - local de onde executará os arquivos.
+ - nome do Projeto criando na GCP.
+ - url onde ficará a app.     
+ 
+Demora certa de 30 min.... 
+
+4 - Testando
+Execute: coloque_aqui_url_gerada_pelo_passo_acima. Rotas '/' (home), /pred_online/ (predição online), /pred_batch/' (predição batch).
+
